@@ -15,13 +15,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-          primaryColor: Colors.green[900],
-        
-    ),
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: Colors.green,
+              secondary: const Color.fromARGB(255, 254, 255, 254))),
       home: LoginScreem(),
     );
   }
 }
-
-
-
