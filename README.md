@@ -23,6 +23,7 @@ Para obter as dependências necessárias, navegue até o diretório do projeto e
 
 ```bash
   flutter pub get
+  ```
 
 
 
