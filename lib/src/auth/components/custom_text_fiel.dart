@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
@@ -24,7 +23,6 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     isObscure = widget.IsSecret;
