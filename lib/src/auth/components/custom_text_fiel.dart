@@ -1,18 +1,23 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Cunstom_text_fild extends StatefulWidget {
   final IconData icon;
   final String label;
-
+  final List<TextInputFormatter>? inputFormatters;
   final bool IsSecret;
 
-  const Cunstom_text_fild({
+  const Cunstom_text_fild(
+    
+    {
     super.key,
+    this.inputFormatters,
     this.IsSecret = false,
     required this.icon,
     required this.label,
-  });
+  }
+  );
 
   @override
   State<Cunstom_text_fild> createState() => _Cunstom_text_fildState();
@@ -35,6 +40,7 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
         bottom: 16,
       ),
       child: TextFormField(
+        inputFormatters: widget.inputFormatters,
         obscureText: isObscure,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.icon),

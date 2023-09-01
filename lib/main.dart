@@ -6,18 +6,23 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: Colors.green,
-              secondary: const Color.fromARGB(255, 254, 255, 254))),
+        scaffoldBackgroundColor: Colors.white,
+        // Defina a cor de fundo do Scaffold como branco.
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.green,
+          // Defina a cor primária como verde.
+          accentColor: Color.fromARGB(196, 250, 249, 249),
+          backgroundColor: Color.fromARGB(196, 250, 249, 249),
+        ),
+      ),
       home: LoginScreem(),
     );
   }
