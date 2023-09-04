@@ -1,4 +1,4 @@
-import 'package:ecommecerfrutas/src/auth/components/custom_text_fiel.dart';
+import 'package:ecommecerfrutas/src/pages/auth/components/custom_text_fiel.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 

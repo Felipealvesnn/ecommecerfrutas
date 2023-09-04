@@ -1,6 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:ecommecerfrutas/src/auth/sign_up_screeam.dart';
-import 'package:ecommecerfrutas/src/base/base_screen.dart';
+import 'package:ecommecerfrutas/src/pages/auth/sign_up_screeam.dart';
+import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'components/custom_text_fiel.dart';

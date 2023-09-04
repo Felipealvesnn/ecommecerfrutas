@@ -1,8 +1,14 @@
 import 'package:ecommecerfrutas/src/home/components/CategoryTile.dart';
 import 'package:flutter/material.dart';
 
-class HomeTab extends StatelessWidget {
+class HomeTab extends StatefulWidget {
   HomeTab({super.key});
+
+  @override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
   List<String> categorias = [
     "Frutas",
     "Legumes",
@@ -10,6 +16,8 @@ class HomeTab extends StatelessWidget {
     "Temperos",
     "Outros",
   ];
+
+  String categoriaSelecionada = "Frutas";
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +80,9 @@ class HomeTab extends StatelessWidget {
               horizontal: 16,
               vertical: 8,
             ),
-            child: TextFormField(
+            child:
+                // parte de pesquisa
+                TextFormField(
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
                     horizontal: 16), // Ajuste o valor conforme necessário
@@ -97,15 +107,22 @@ class HomeTab extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          //lista de categorias
+          Container(
             height: 30,
+            padding:const EdgeInsets.only(left: 16) ,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               itemCount: categorias.length,
               itemBuilder: (context, index) {
                 return CategoryTile(
+                  onPressed: () {
+                    setState(() {
+                      categoriaSelecionada = categorias[index];
+                    });
+                  },
                   Category: categorias[index],
-                  isSelect: index == 0,
+                  isSelect: categorias[index] == categoriaSelecionada ,
                 );
               },
               separatorBuilder: (context, index) {
