@@ -1,22 +1,16 @@
+import 'package:ecommecerfrutas/src/config/app_data.dart' as AppData;
 import 'package:ecommecerfrutas/src/home/components/CategoryTile.dart';
+import 'package:ecommecerfrutas/src/home/components/item_title.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatefulWidget {
-  HomeTab({super.key});
+  const HomeTab({super.key});
 
   @override
   State<HomeTab> createState() => _HomeTabState();
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<String> categorias = [
-    "Frutas",
-    "Legumes",
-    "Verduras",
-    "Temperos",
-    "Outros",
-  ];
-
   String categoriaSelecionada = "Frutas";
 
   @override
@@ -110,19 +104,20 @@ class _HomeTabState extends State<HomeTab> {
           //lista de categorias
           Container(
             height: 30,
-            padding:const EdgeInsets.only(left: 16) ,
+            margin: EdgeInsets.only(bottom: 16),
+            padding: const EdgeInsets.only(left: 16),
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              itemCount: categorias.length,
+              itemCount: AppData.categorias.length,
               itemBuilder: (context, index) {
                 return CategoryTile(
                   onPressed: () {
                     setState(() {
-                      categoriaSelecionada = categorias[index];
+                      categoriaSelecionada = AppData.categorias[index];
                     });
                   },
-                  Category: categorias[index],
-                  isSelect: categorias[index] == categoriaSelecionada ,
+                  Category: AppData.categorias[index],
+                  isSelect: AppData.categorias[index] == categoriaSelecionada,
                 );
               },
               separatorBuilder: (context, index) {
@@ -132,7 +127,24 @@ class _HomeTabState extends State<HomeTab> {
               },
               scrollDirection: Axis.horizontal,
             ),
-          )
+          ),
+          Expanded(
+            child: GridView.builder(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              shrinkWrap: true,
+              itemCount: AppData.items.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.7,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+              ),
+              itemBuilder: (context, index) {
+                return item_title(item: AppData.items[index]);
+              },
+            ),
+          ),
         ],
       ),
       //categorias
