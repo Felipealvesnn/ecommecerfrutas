@@ -59,7 +59,7 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
               : null,
           isDense: true,
           labelText: widget.label,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(18))),
         ),
       ),

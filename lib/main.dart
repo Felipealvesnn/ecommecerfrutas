@@ -6,7 +6,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key, Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.green,
           // Defina a cor primária como verde.
-          accentColor: Color.fromARGB(196, 250, 249, 249),
-          backgroundColor: Color.fromARGB(196, 250, 249, 249),
+          accentColor: const Color.fromARGB(196, 250, 249, 249),
+          backgroundColor: const Color.fromARGB(196, 250, 249, 249),
         ),
       ),
-      home: LoginScreem(),
+      home: const LoginScreem(),
     );
   }
 }

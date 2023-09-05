@@ -26,7 +26,7 @@ class item_title extends StatelessWidget {
             //titulo
             Text(
               item.itemName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -34,7 +34,7 @@ class item_title extends StatelessWidget {
             //preço
             Text(
               item.price.toStringAsFixed(2),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.green,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key});
+  SignUpScreen({super.key, Key? key});
 
   final cpfFormatter = MaskTextInputFormatter(
     mask: "###.###.###-##",
@@ -30,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Center(
                         child: Text(
                           "Cadastre-se",
@@ -46,7 +46,7 @@ class SignUpScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Container(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           top: 20, left: 20, right: 20, bottom: 0),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -93,16 +93,16 @@ class SignUpScreen extends StatelessWidget {
                                 height: 50,
                                 child: ElevatedButton(
                                   onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
                                   child: const Text(
                                     "Cadastrar",
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
                                 ),
@@ -121,7 +121,7 @@ class SignUpScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back_ios),
+                    icon: const Icon(Icons.arrow_back_ios),
                     color: Colors.white,
                   ),
                 ),

@@ -101,20 +101,20 @@ class LoginScreem extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) =>  BaseScreem(),
+                              builder: (context) =>  const BaseScreem(),
                             ),
                           );
                         },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
                         child: const Text(
                           "Login",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ),
@@ -182,13 +182,6 @@ class LoginScreem extends StatelessWidget {
                             ),
                           );
                         },
-                        child: const Text(
-                          "Criar Nova Conta",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                         style: OutlinedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -196,6 +189,13 @@ class LoginScreem extends StatelessWidget {
                           side: const BorderSide(
                             color: Colors.green,
                             width: 2,
+                          ),
+                        ),
+                        child: const Text(
+                          "Criar Nova Conta",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 Map<int, Color> _swatOchopaticy = {
-  50: Color.fromARGB(1, 139, 195, 74),
-  100: Color.fromARGB(1, 139, 195, 74),
-  200: Color.fromARGB(1, 139, 195, 74),
+  50: const Color.fromARGB(1, 139, 195, 74),
+  100: const Color.fromARGB(1, 139, 195, 74),
+  200: const Color.fromARGB(1, 139, 195, 74),
 };
 
 abstract class CustomColors {

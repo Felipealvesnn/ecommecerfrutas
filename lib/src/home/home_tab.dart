@@ -48,7 +48,7 @@ class _HomeTabState extends State<HomeTab> {
             child: GestureDetector(
               onTap: () {},
               child: Badge(
-                backgroundColor: Color.fromARGB(255, 240, 31, 3),
+                backgroundColor: const Color.fromARGB(255, 240, 31, 3),
                 label: const Text(
                   '2',
                   style: TextStyle(
@@ -78,7 +78,7 @@ class _HomeTabState extends State<HomeTab> {
                 // parte de pesquisa
                 TextFormField(
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(
+                contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16), // Ajuste o valor conforme necessário
                 isDense: true,
                 hintText: "Pesquisar",
@@ -104,7 +104,7 @@ class _HomeTabState extends State<HomeTab> {
           //lista de categorias
           Container(
             height: 30,
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
             padding: const EdgeInsets.only(left: 16),
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -134,7 +134,7 @@ class _HomeTabState extends State<HomeTab> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               shrinkWrap: true,
               itemCount: AppData.items.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 0.7,
                 mainAxisSpacing: 16,
