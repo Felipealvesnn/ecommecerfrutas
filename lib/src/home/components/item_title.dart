@@ -17,6 +17,7 @@ class item_title extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             //imagem
             Image.asset(

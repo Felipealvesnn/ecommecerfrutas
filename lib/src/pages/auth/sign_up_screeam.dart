@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key, Key? key});
+ 
 
   final cpfFormatter = MaskTextInputFormatter(
     mask: "###.###.###-##",
@@ -13,6 +13,8 @@ class SignUpScreen extends StatelessWidget {
     mask: "(##)#####-####",
     filter: {"#": RegExp(r'[0-9]')},
   );
+
+  SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
