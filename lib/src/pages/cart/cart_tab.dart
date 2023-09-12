@@ -1,12 +1,24 @@
 import 'dart:math';
 
 import 'package:ecommecerfrutas/src/config/app_data.dart';
+import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
 import 'package:ecommecerfrutas/src/pages/cart/components/cart_title.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
 
-class CartTab extends StatelessWidget {
+class CartTab extends StatefulWidget {
   const CartTab({super.key});
+
+  @override
+  State<CartTab> createState() => _CartTabState();
+}
+
+class _CartTabState extends State<CartTab> {
+  void removeItemFromCart(CartItemModel cartItem) {
+    setState(() {
+      cartItems.remove(cartItem);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +33,7 @@ class CartTab extends StatelessWidget {
               itemCount: cartItems.length,
               itemBuilder: (context, index) {
                 return CartTile(
+                  remove: removeItemFromCart,
                   cartItem: cartItems[index],
                 );
               },

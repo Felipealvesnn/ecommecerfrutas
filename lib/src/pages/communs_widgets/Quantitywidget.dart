@@ -33,12 +33,12 @@ class Quantitywidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _quatitiButtom(
-            color: Colors.red,
+            color: !isRemovable || quantity > 1 ? Colors.grey : Colors.red,
             icon: !isRemovable || quantity > 1
                 ? Icons.remove
                 : Icons.delete_forever,
             onPressed: () {
-              if (quantity == 1) return;
+              if (quantity == 1 && !isRemovable) return;
               onQuantityChange(quantity - 1);
             },
           ),
