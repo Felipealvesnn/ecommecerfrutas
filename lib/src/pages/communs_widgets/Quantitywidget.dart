@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class Quantitywidget extends StatelessWidget {
   final String item;
-
-  const Quantitywidget({super.key, required this.item});
+  final int quantity;
+  final Function(int) onQuantityChange;
+  
+  const Quantitywidget({super.key, required this.item,required this.onQuantityChange , required this.quantity});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +27,15 @@ class Quantitywidget extends StatelessWidget {
           _quatitiButtom(
             color: Colors.red,
             icon: Icons.remove,
-            onPressed: () {},
+            onPressed: () {
+              if (quantity == 1) return;
+              onQuantityChange(quantity - 1);
+            },
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
-              "1, $item",
+              "$quantity, $item",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -40,7 +45,9 @@ class Quantitywidget extends StatelessWidget {
           _quatitiButtom(
             color: Colors.green,
             icon: Icons.add,
-            onPressed: () {},
+            onPressed: () {
+              onQuantityChange(quantity + 1);
+            },
           ),
         ],
       ),
@@ -73,7 +80,10 @@ class _quatitiButtom extends StatelessWidget {
             borderRadius: BorderRadius.circular(50),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              
+              onPressed();
+            },
             icon: Icon(icon),
             color: Colors.white,
           ),

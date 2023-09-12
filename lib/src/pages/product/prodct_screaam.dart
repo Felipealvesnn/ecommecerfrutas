@@ -3,14 +3,21 @@ import 'package:ecommecerfrutas/src/pages/communs_widgets/Quantitywidget.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
 
-class ProductScream extends StatelessWidget {
+class ProductScream extends StatefulWidget {
   final ItemModel item;
 
-  const ProductScream({super.key, required this.item});
+   ProductScream({super.key, required this.item});
+
+  @override
+  State<ProductScream> createState() => _ProductScreamState();
+}
+
+class _ProductScreamState extends State<ProductScream> {
+ int cartItemQuantiti = 2;
 
   @override
   Widget build(BuildContext context) {
-    String moeda = UtilsServices.priceTocurrenci(item.price);
+    String moeda = UtilsServices.priceTocurrenci(widget.item.price);
     return Scaffold(
       backgroundColor: Colors.white.withAlpha(230),
       body: Stack(
@@ -19,7 +26,7 @@ class ProductScream extends StatelessWidget {
           Column(
             children: [
               Expanded(
-                child: Hero(tag: item.imgUrl, child: Image.asset(item.imgUrl)),
+                child: Hero(tag: widget.item.imgUrl, child: Image.asset(widget.item.imgUrl)),
               ),
               Expanded(
                 child: Container(
@@ -43,7 +50,7 @@ class ProductScream extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(18),
                           child: Text(
-                            item.itemName,
+                            widget.item.itemName,
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -65,7 +72,14 @@ class ProductScream extends StatelessWidget {
                                 ),
                               ),
                               Quantitywidget(
-                                item: item.unit,
+                                item: widget.item.unit,
+                                quantity: cartItemQuantiti,
+                                onQuantityChange: (value) {
+                                  setState(() {
+                                    print(value);
+                                    cartItemQuantiti = value;
+                                  });
+                                },
                               ),
                             ],
                           ),
@@ -76,7 +90,7 @@ class ProductScream extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(18),
                               child: Text(
-                                item.description,
+                                widget.item.description,
                                 // overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   height: 1.5,
