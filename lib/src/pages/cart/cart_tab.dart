@@ -19,6 +19,13 @@ class _CartTabState extends State<CartTab> {
       cartItems.remove(cartItem);
     });
   }
+  double cartTotalPrice() {
+    double total = 0;
+    cartItems.forEach((element) {
+      total += element.item.price * element.quantity;
+    });
+    return total;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +76,7 @@ class _CartTabState extends State<CartTab> {
                     ),
                   ),
                   Text(
-                    UtilsServices.priceTocurrenci(100),
+                    UtilsServices.priceTocurrenci(cartTotalPrice()),
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
