@@ -1,3 +1,4 @@
+import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
 import 'package:ecommecerfrutas/src/models/item_model.dart';
 
 ItemModel apple = ItemModel(
@@ -70,4 +71,12 @@ List<ItemModel> items = [
     "Verduras",
     "Temperos",
     "Outros",
+  ];
+  List<CartItemModel> cartItems = [
+    CartItemModel(item: apple, quantity: 4),
+    CartItemModel(item: grape, quantity: 5),
+    CartItemModel(item: guava, quantity: 6),
+    CartItemModel(item: kiwi, quantity: 1),
+    CartItemModel(item: mango, quantity: 2),
+    CartItemModel(item: papaya, quantity: 3),
   ];

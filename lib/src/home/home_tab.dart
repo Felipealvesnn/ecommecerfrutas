@@ -66,7 +66,6 @@ class _HomeTabState extends State<HomeTab> {
         ],
       ),
       //campo de pesquisa
-
       body: Column(
         children: [
           Padding(

@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class ProductScream extends StatefulWidget {
   final ItemModel item;
 
-   ProductScream({super.key, required this.item});
+  ProductScream({super.key, required this.item});
 
   @override
   State<ProductScream> createState() => _ProductScreamState();
 }
 
 class _ProductScreamState extends State<ProductScream> {
- int cartItemQuantiti = 2;
+  int cartItemQuantiti = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,10 @@ class _ProductScreamState extends State<ProductScream> {
           Column(
             children: [
               Expanded(
-                child: Hero(tag: widget.item.imgUrl, child: Image.asset(widget.item.imgUrl)),
+                child: Hero(
+                  tag: widget.item.imgUrl,
+                  child: Image.asset(widget.item.imgUrl),
+                ),
               ),
               Expanded(
                 child: Container(

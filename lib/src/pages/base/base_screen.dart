@@ -1,4 +1,5 @@
 import 'package:ecommecerfrutas/src/home/home_tab.dart';
+import 'package:ecommecerfrutas/src/pages/cart/cart_tab.dart';
 import 'package:flutter/material.dart';
 
 class BaseScreem extends StatefulWidget {
@@ -18,10 +19,8 @@ class _BaseScreemState extends State<BaseScreem> {
           physics: const NeverScrollableScrollPhysics(),
           controller: pagecontroller,
           children: [
-           const HomeTab(),
-            Container(
-              color: Colors.blue,
-            ),
+            const HomeTab(),
+            const CartTab(),
             Container(
               color: Colors.green,
             ),

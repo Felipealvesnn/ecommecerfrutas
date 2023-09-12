@@ -4,8 +4,15 @@ class Quantitywidget extends StatelessWidget {
   final String item;
   final int quantity;
   final Function(int) onQuantityChange;
-  
-  const Quantitywidget({super.key, required this.item,required this.onQuantityChange , required this.quantity});
+  final bool isRemovable;
+
+  const Quantitywidget({
+    super.key,
+    required this.item,
+    required this.onQuantityChange,
+    required this.quantity,
+    this.isRemovable = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +30,13 @@ class Quantitywidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           _quatitiButtom(
             color: Colors.red,
-            icon: Icons.remove,
+            icon: !isRemovable || quantity > 1
+                ? Icons.remove
+                : Icons.delete_forever,
             onPressed: () {
               if (quantity == 1) return;
               onQuantityChange(quantity - 1);
@@ -81,7 +91,6 @@ class _quatitiButtom extends StatelessWidget {
           ),
           child: IconButton(
             onPressed: () {
-              
               onPressed();
             },
             icon: Icon(icon),
