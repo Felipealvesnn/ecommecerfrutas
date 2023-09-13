@@ -1,5 +1,6 @@
 import 'package:ecommecerfrutas/src/home/home_tab.dart';
 import 'package:ecommecerfrutas/src/pages/cart/cart_tab.dart';
+import 'package:ecommecerfrutas/src/pages/profile/profile_dev.dart';
 import 'package:flutter/material.dart';
 
 class BaseScreem extends StatefulWidget {
@@ -24,9 +25,7 @@ class _BaseScreemState extends State<BaseScreem> {
             Container(
               color: Colors.green,
             ),
-            Container(
-              color: Colors.yellow,
-            ),
+           Profile_tab(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

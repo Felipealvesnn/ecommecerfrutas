@@ -1,5 +1,6 @@
 import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
 import 'package:ecommecerfrutas/src/models/item_model.dart';
+import 'package:ecommecerfrutas/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
   description:
@@ -65,18 +66,26 @@ List<ItemModel> items = [
   papaya,
 ];
 
- List<String> categorias = [
-    "Frutas",
-    "Legumes",
-    "Verduras",
-    "Temperos",
-    "Outros",
-  ];
-  List<CartItemModel> cartItems = [
-    CartItemModel(item: apple, quantity: 4),
-    CartItemModel(item: grape, quantity: 5),
-    CartItemModel(item: guava, quantity: 6),
-    CartItemModel(item: kiwi, quantity: 1),
-    CartItemModel(item: mango, quantity: 2),
-    CartItemModel(item: papaya, quantity: 3),
-  ];
+List<String> categorias = [
+  "Frutas",
+  "Legumes",
+  "Verduras",
+  "Temperos",
+  "Outros",
+];
+List<CartItemModel> cartItems = [
+  CartItemModel(item: apple, quantity: 4),
+  CartItemModel(item: grape, quantity: 5),
+  CartItemModel(item: guava, quantity: 6),
+  CartItemModel(item: kiwi, quantity: 1),
+  CartItemModel(item: mango, quantity: 2),
+  CartItemModel(item: papaya, quantity: 3),
+];
+
+UseModal Userprograma = UseModal(
+  name: 'João',
+  email: 'tests@gmail.com',
+  phone: '999999999',
+  cpf: '99999999999',
+  password: '123456',
+);

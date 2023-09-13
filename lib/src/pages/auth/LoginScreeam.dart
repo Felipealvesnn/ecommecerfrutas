@@ -3,7 +3,7 @@ import 'package:ecommecerfrutas/src/pages/auth/sign_up_screeam.dart';
 import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'components/custom_text_fiel.dart';
+import '../communs_widgets/custom_text_fiel.dart';
 
 class LoginScreem extends StatelessWidget {
   const LoginScreem({super.key});

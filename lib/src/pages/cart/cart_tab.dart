@@ -19,6 +19,7 @@ class _CartTabState extends State<CartTab> {
       cartItems.remove(cartItem);
     });
   }
+
   double cartTotalPrice() {
     double total = 0;
     cartItems.forEach((element) {
@@ -29,6 +30,42 @@ class _CartTabState extends State<CartTab> {
 
   @override
   Widget build(BuildContext context) {
+
+    Future<bool?> showOrderDialog() {
+      return showDialog<bool>(
+        context: context,
+        builder: (contexto) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: Text("Finalizar Compra"),
+            content: Text("Deseja finalizar a compra?"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+                child: Text("Cancelar"),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+                child: Text("Confirmar"),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Carrinho"),
@@ -91,7 +128,15 @@ class _CartTabState extends State<CartTab> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                      showOrderDialog().then((value) {
+                        print(value);
+                          if (value!) {
+                            cartItems.clear();
+                            //  Navigator.of(context).pushNamed(AppRoutes.checkout);
+                          }
+                        });
+                      },
                       child: const Text(
                         "Finalizar Compra",
                         style: TextStyle(
