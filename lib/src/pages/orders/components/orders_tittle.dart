@@ -1,4 +1,7 @@
+import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
 import 'package:ecommecerfrutas/src/models/order_model.dart';
+import 'package:ecommecerfrutas/src/pages/orders/components/order_status.dart';
+import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
 
 class OrdersTitle extends StatelessWidget {
@@ -12,7 +15,7 @@ class OrdersTitle extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: ExpansionTile(
-        childrenPadding: EdgeInsets.all(16.0),
+        childrenPadding: EdgeInsets.fromLTRB(16, 0, 16, 16),
         expandedCrossAxisAlignment: CrossAxisAlignment.start,
         title: Column(
           mainAxisSize: MainAxisSize.min,
@@ -26,7 +29,7 @@ class OrdersTitle extends StatelessWidget {
               ),
             ),
             Text(
-              'data: ${order.createDatetime.toString().substring(0, 10)}',
+              'data: ${UtilsServices.formatDateTime(order.createDatetime)}',
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.green,
@@ -36,54 +39,74 @@ class OrdersTitle extends StatelessWidget {
           ],
         ),
         children: [
-         const Text(
-            'Produtos',
-            style:  TextStyle(
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          Column(
-            children: order.items.map((item) {
-              return ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Image.asset(
-                  item.item.imgUrl,
-                  fit: BoxFit.cover,
-                  height: 50.0,
-                  width: 50.0,
-                ),
-                title: Text(item.item.itemName),
-                subtitle: Text('${item.quantity}x'),
-                trailing: Text(
-                  'R\$ ${item.item.price.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.green,
-                    fontSize: 14.0,
+          SizedBox(
+            height: 150,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: ListView(
+                    children: order.items.map((e) {
+                      return _orderItem(e: e);
+                    }).toList(),
                   ),
                 ),
-              );
-            }).toList(),
+                const VerticalDivider(
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: OrderStatuss(
+                      status: order.status,
+                      isOverdul: order.overdueDatetime.isBefore(
+                        DateTime.now(),
+                      )),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _orderItem extends StatelessWidget {
+  const _orderItem({
+    super.key,
+    required this.e,
+  });
+  final CartItemModel e;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          Text(
+            '${e.quantity} ${e.item.unit} ',
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Colors.grey,
+            ),
           ),
-          SizedBox(height: 8.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Total',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
+          Expanded(
+            child: Text(
+              ' ${e.item.itemName}',
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.grey,
               ),
-              Text(
-                'R\$ ${order.total.toStringAsFixed(2)}',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.green,
-                  fontSize: 16.0,
-                ),
-              ),
-            ],
+            ),
+          ),
+          Text(
+            ' R\$ ${UtilsServices.priceTocurrenci(e.totalPrive())}',
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Colors.grey,
+            ),
           ),
         ],
       ),
