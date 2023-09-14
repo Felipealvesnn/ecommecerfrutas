@@ -1,3 +1,5 @@
+import 'package:ecommecerfrutas/src/config/app_data.dart';
+import 'package:ecommecerfrutas/src/pages/orders/components/orders_tittle.dart';
 import 'package:flutter/material.dart';
 
 class Orders_tab extends StatelessWidget {
@@ -10,16 +12,9 @@ class Orders_tab extends StatelessWidget {
         title: Text('Orders'),
       ),
       body: ListView.separated(
-        itemCount: 10,
+        itemCount: orders.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Order #${index + 1}'),
-            subtitle: Text('Order description'),
-            trailing: Icon(Icons.chevron_right),
-            onTap: () {
-              Navigator.pushNamed(context, 'order_detail');
-            },
-          );
+          return OrdersTitle(order: orders[index]);
         },
         padding: EdgeInsets.all(16.0),
         physics: BouncingScrollPhysics(),
