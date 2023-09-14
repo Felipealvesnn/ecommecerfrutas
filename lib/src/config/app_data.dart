@@ -1,5 +1,6 @@
 import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
 import 'package:ecommecerfrutas/src/models/item_model.dart';
+import 'package:ecommecerfrutas/src/models/order_model.dart';
 import 'package:ecommecerfrutas/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
@@ -89,3 +90,43 @@ UseModal Userprograma = UseModal(
   cpf: '99999999999',
   password: '123456',
 );
+
+
+List<OrderModel> orders = [
+OrderModel(
+  id: '1',
+  createDatetime: DateTime.now(),
+  items: cartItems,
+  overdueDatetime: DateTime.now(),
+  status: 'Pendente',
+  copyandpaste: '1',
+  total: 100,
+),
+OrderModel(
+  id: '2',
+  createDatetime: DateTime.now(),
+  items: cartItems,
+  overdueDatetime: DateTime.now(),
+  status: 'Pendente',
+  copyandpaste: '1',
+  total: 100,
+),
+OrderModel(
+  id: '3',
+  createDatetime: DateTime.now(),
+  items: cartItems,
+  overdueDatetime: DateTime.now(),
+  status: 'Pendente',
+  copyandpaste: '1',
+  total: 100,
+),
+OrderModel(
+  id: '4',
+  createDatetime: DateTime.now(),
+  items: cartItems,
+  overdueDatetime: DateTime.now(),
+  status: 'Pendente',
+  copyandpaste: '1',
+  total: 100,
+),
+];

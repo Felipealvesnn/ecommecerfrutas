@@ -1,5 +1,6 @@
 import 'package:ecommecerfrutas/src/home/home_tab.dart';
 import 'package:ecommecerfrutas/src/pages/cart/cart_tab.dart';
+import 'package:ecommecerfrutas/src/pages/orders/orders_tab.dart';
 import 'package:ecommecerfrutas/src/pages/profile/profile_dev.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,7 @@ class _BaseScreemState extends State<BaseScreem> {
           children: [
             const HomeTab(),
             const CartTab(),
-            Container(
-              color: Colors.green,
-            ),
+          const Orders_tab(),
            Profile_tab(),
           ],
         ),
