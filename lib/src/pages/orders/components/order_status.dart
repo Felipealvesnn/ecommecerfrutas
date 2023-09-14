@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class OrderStatuss extends StatelessWidget {
   final String status;
   final bool isOverdul;
+  
 
   const OrderStatuss({Key? key, required this.status, required this.isOverdul})
       : super(key: key);
@@ -10,8 +11,10 @@ class OrderStatuss extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _StatusDot(isActived: true, title: 'Pedido recebido'),
+        _CustomDivider(),
         _StatusDot(isActived: false, title: 'Pedido em preparação'),
       ],
     );
@@ -49,12 +52,32 @@ class _StatusDot extends StatelessWidget {
                 )
               : const SizedBox.shrink(),
         ),
-       const SizedBox(width: 8,),
+        const SizedBox(
+          width: 8,
+        ),
         //texto
         Expanded(
-          child: Text(title),
+          child: Text(
+            title,
+            style: TextStyle(fontSize: 12),
+          ),
         ),
       ],
     );
   }
+}
+
+class _CustomDivider extends StatelessWidget {
+  const _CustomDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      height: 10,
+      width: 2,
+      color: Colors.grey,
+    )  ;
+    
+    }
 }
