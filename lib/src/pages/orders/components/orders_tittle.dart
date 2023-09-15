@@ -1,5 +1,6 @@
 import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
 import 'package:ecommecerfrutas/src/models/order_model.dart';
+import 'package:ecommecerfrutas/src/pages/communs_widgets/payment_dialog.dart';
 import 'package:ecommecerfrutas/src/pages/orders/components/order_status.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,9 @@ class OrdersTitle extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: ExpansionTile(
-        childrenPadding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+        initiallyExpanded: order.status == 'pending_payment',
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
         title: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,16 +41,18 @@ class OrdersTitle extends StatelessWidget {
           ],
         ),
         children: [
-          SizedBox(
-            height: 150,
+          IntrinsicHeight(
             child: Row(
               children: [
                 Expanded(
                   flex: 3,
-                  child: ListView(
-                    children: order.items.map((e) {
-                      return _orderItem(e: e);
-                    }).toList(),
+                  child: SizedBox(
+                    height: 150,
+                    child: ListView(
+                      children: order.items.map((e) {
+                        return _orderItem(e: e);
+                      }).toList(),
+                    ),
                   ),
                 ),
                 const VerticalDivider(
@@ -65,7 +69,55 @@ class OrdersTitle extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
+
+          //total
+          Text.rich(
+            TextSpan(
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+                color: Colors.grey,
+              ),
+              children: [
+                const TextSpan(
+                    text: 'Total  ',
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.grey)),
+                TextSpan(
+                  text: 'R\$ ${UtilsServices.priceTocurrenci(order.total)}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.green,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //botao pagamento
+          Visibility(
+            visible: order.status == 'pending_payment',
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return  PaymentDialog();
+                  },
+                );
+              },
+              icon: Image.asset(
+                'assets/app_images/pix.png',
+                height: 18,
+              ),
+              label: const Text('Ver qrcode do Pix'),
+            ),
+          ),
         ],
       ),
     );

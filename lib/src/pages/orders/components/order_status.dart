@@ -3,9 +3,18 @@ import 'package:flutter/material.dart';
 class OrderStatuss extends StatelessWidget {
   final String status;
   final bool isOverdul;
-  
 
-  const OrderStatuss({Key? key, required this.status, required this.isOverdul})
+  final Map<String, int> allStatus = {
+    'pending_payment': 0,
+    'refunded': 1,
+    'paid': 2,
+    'preparing_purchase': 3,
+    'shipping': 4,
+    'delivered': 5,
+  };
+  int get currentStatus => allStatus[status] ?? 0;
+
+  OrderStatuss({Key? key, required this.status, required this.isOverdul})
       : super(key: key);
 
   @override
@@ -13,18 +22,58 @@ class OrderStatuss extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _StatusDot(isActived: true, title: 'Pedido recebido'),
-        _CustomDivider(),
-        _StatusDot(isActived: false, title: 'Pedido em preparação'),
+        const _StatusDot(
+          title: 'Pedido confirmado',
+          isActive: true,
+        ),
+        const _CustomDivider(),
+        if (currentStatus == 1) ...[
+          const _StatusDot(
+            isActive: true,
+            title: 'Pix estornado',
+            backgroundColor: Colors.orange,
+          ),
+        ] else if (isOverdul) ...[
+          const _StatusDot(
+            isActive: true,
+            title: 'Pagamento Pix vencido',
+            backgroundColor: Colors.red,
+          ),
+        ] else ...[
+          _StatusDot(
+            isActive: currentStatus >= 2,
+            title: 'Pagamento',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus >= 3,
+            title: 'Preparando',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus >= 4,
+            title: 'Envio',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus == 5,
+            title: 'Entregue',
+          ),
+        ],
       ],
     );
   }
 }
 
 class _StatusDot extends StatelessWidget {
-  final bool isActived;
+  final bool isActive;
   final String title;
-  const _StatusDot({Key? key, required this.title, required this.isActived})
+  final Color? backgroundColor;
+  const _StatusDot(
+      {Key? key,
+      required this.title,
+      this.backgroundColor,
+      required this.isActive})
       : super(key: key);
 
   @override
@@ -37,14 +86,15 @@ class _StatusDot extends StatelessWidget {
           width: 20,
           height: 20,
           decoration: BoxDecoration(
-            color: isActived ? Colors.green : Colors.transparent,
+            color:
+                isActive ? backgroundColor ?? Colors.green : Colors.transparent,
             shape: BoxShape.circle,
             border: Border.all(
-              color: Colors.white,
+              color: isActive ? Colors.white : Colors.grey,
               width: 3,
             ),
           ),
-          child: isActived
+          child: isActive
               ? const Icon(
                   Icons.check,
                   color: Colors.white,
@@ -77,7 +127,6 @@ class _CustomDivider extends StatelessWidget {
       height: 10,
       width: 2,
       color: Colors.grey,
-    )  ;
-    
-    }
+    );
+  }
 }
