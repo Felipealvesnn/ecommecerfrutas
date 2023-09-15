@@ -3,6 +3,7 @@ import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:ecommecerfrutas/src/config/app_data.dart' as AppData;
 import 'package:ecommecerfrutas/src/home/components/CategoryTile.dart';
 import 'package:ecommecerfrutas/src/home/components/item_title.dart';
+import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -47,15 +48,7 @@ class _HomeTabState extends State<HomeTab> {
         centerTitle: true,
         title: GestureDetector(
           onTap: () {
-            Fluttertoast.showToast(
-              msg: "This is Center Short Toast",
-              toastLength: Toast.LENGTH_LONG,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 4,
-              backgroundColor: Colors.red,
-              textColor: const Color.fromARGB(255, 0, 0, 0),
-              fontSize: 16.0,
-            );
+          UtilsServices.showToast('dd', errork: true);
           },
           child: const Text.rich(
             TextSpan(

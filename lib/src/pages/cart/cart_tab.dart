@@ -18,6 +18,7 @@ class _CartTabState extends State<CartTab> {
   void removeItemFromCart(CartItemModel cartItem) {
     setState(() {
       cartItems.remove(cartItem);
+      UtilsServices.showToast( "Item removido do carrinho");
     });
   }
 
@@ -142,7 +143,9 @@ class _CartTabState extends State<CartTab> {
                                 );
                               },
                             );
-                          }
+                          }else{
+                            UtilsServices.showToast( "Compra cancelada");
+                          }	
                         });
                       },
                       child: const Text(
