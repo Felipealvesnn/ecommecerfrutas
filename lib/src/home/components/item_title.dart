@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 
 class item_title extends StatelessWidget {
   final ItemModel item;
+  final void Function(GlobalKey) runAddToCardAnimation;
+  final GlobalKey imageKey = GlobalKey();
 
-  const item_title({super.key, required this.item});
+   item_title({super.key, required this.item, required this.runAddToCardAnimation});
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,11 @@ class item_title extends StatelessWidget {
                   Expanded(
                     child: Hero(
                       tag: item.imgUrl,
-                      child: Image.asset(
-                        item.imgUrl,
+                      child: Container(
+                        key: imageKey,
+                        child: Image.asset(
+                          item.imgUrl,
+                        ),
                       ),
                     ),
                   ),
@@ -81,7 +86,9 @@ class item_title extends StatelessWidget {
           top: 4,
           right: 4,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              runAddToCardAnimation(imageKey);
+            },
             child: Container(
               height: 40,
               width: 35,
