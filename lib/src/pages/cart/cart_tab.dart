@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:ecommecerfrutas/src/config/app_data.dart';
 import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
 import 'package:ecommecerfrutas/src/pages/cart/components/cart_title.dart';
+import 'package:ecommecerfrutas/src/pages/communs_widgets/payment_dialog.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,6 @@ class _CartTabState extends State<CartTab> {
 
   @override
   Widget build(BuildContext context) {
-
     Future<bool?> showOrderDialog() {
       return showDialog<bool>(
         context: context,
@@ -129,11 +129,19 @@ class _CartTabState extends State<CartTab> {
                             borderRadius: BorderRadius.circular(20)),
                       ),
                       onPressed: () {
-                      showOrderDialog().then((value) {
-                        print(value);
+                        showOrderDialog().then((value) {
+                          print(value);
                           if (value!) {
                             cartItems.clear();
                             //  Navigator.of(context).pushNamed(AppRoutes.checkout);
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return PaymentDialog(
+                                  order: orders.first,
+                                );
+                              },
+                            );
                           }
                         });
                       },

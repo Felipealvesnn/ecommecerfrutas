@@ -107,7 +107,9 @@ class OrdersTitle extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) {
-                    return  PaymentDialog();
+                    return PaymentDialog(
+                      order: order,
+                    );
                   },
                 );
               },
