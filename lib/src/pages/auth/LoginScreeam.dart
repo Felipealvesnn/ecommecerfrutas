@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:ecommecerfrutas/src/pages/auth/sign_up_screeam.dart';
 import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
+import 'package:ecommecerfrutas/src/pages/communs_widgets/app_name.dart';
 import 'package:flutter/material.dart';
 
 import '../communs_widgets/custom_text_fiel.dart';
@@ -14,69 +15,52 @@ class LoginScreem extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.green,
       body: SingleChildScrollView(
-         scrollDirection: Axis.vertical,
+        scrollDirection: Axis.vertical,
         child: SizedBox(
           height: size.size.height,
           width: size.size.width,
           child: Column(
             children: [
               Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //nome do app
-                  const Text.rich(
-                    TextSpan(
-                        style: TextStyle(
-                          fontSize: 40,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //nome do app
+                    AppnameWidget(color: Colors.white, fontSize: 40),
+                    //categorias
+                    SizedBox(
+                      height: 40,
+                      child: DefaultTextStyle(
+                        style: const TextStyle(
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
-                        children: [
-                          TextSpan(
-                            text: "Frutas",
-                            style: TextStyle(
-                              color: Colors.white,
+                        child: AnimatedTextKit(
+                          repeatForever: true,
+                          pause: const Duration(milliseconds: 500),
+                          animatedTexts: [
+                            FadeAnimatedText(
+                              "Frutas",
                             ),
-                          ),
-                          TextSpan(
-                            text: "App",
-                            style: TextStyle(
-                              color: Colors.red,
+                            FadeAnimatedText(
+                              "Legumes",
                             ),
-                          ),
-                        ]),
-                  ),
-                  //categorias
-                  SizedBox(
-                    height: 40,
-                    child: DefaultTextStyle(
-                      style: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                            FadeAnimatedText(
+                              "Verduras",
+                            ),
+                          ],
+                        ),
                       ),
-                      child: AnimatedTextKit(
-                        repeatForever: true,
-                        pause: const Duration(milliseconds: 500),
-                        animatedTexts: [
-                          FadeAnimatedText(
-                            "Frutas",
-                          ),
-                          FadeAnimatedText(
-                            "Legumes",
-                          ),
-                          FadeAnimatedText(
-                            "Verduras",
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              )),
+                    )
+                  ],
+                ),
+              ),
+
               //formulario
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(
@@ -101,7 +85,7 @@ class LoginScreem extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) =>  const BaseScreem(),
+                              builder: (context) => const BaseScreem(),
                             ),
                           );
                         },
@@ -123,9 +107,7 @@ class LoginScreem extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {
-                          
-                        },
+                        onPressed: () {},
                         child: const Text(
                           "Forgot Password?",
                           style: TextStyle(
@@ -136,7 +118,7 @@ class LoginScreem extends StatelessWidget {
                         ),
                       ),
                     ),
-              
+
                     ///divisor
                     Padding(
                       padding: const EdgeInsets.only(
@@ -170,15 +152,15 @@ class LoginScreem extends StatelessWidget {
                         ],
                       ),
                     ),
-              
+
                     //botao de novo usuario
                     SizedBox(
                       height: 50,
-                      child:  OutlinedButton(
+                      child: OutlinedButton(
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) =>  SignUpScreen(),
+                              builder: (context) => SignUpScreen(),
                             ),
                           );
                         },

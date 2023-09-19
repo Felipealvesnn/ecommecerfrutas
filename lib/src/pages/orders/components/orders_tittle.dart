@@ -83,7 +83,9 @@ class OrdersTitle extends StatelessWidget {
                 const TextSpan(
                     text: 'Total  ',
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.grey)),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    )),
                 TextSpan(
                   text: 'R\$ ${UtilsServices.priceTocurrenci(order.total)}',
                   style: const TextStyle(
@@ -113,10 +115,11 @@ class OrdersTitle extends StatelessWidget {
                   },
                 );
               },
-              icon: Image.asset(
+              icon: Icon(Icons.qr_code),
+              /* Image.asset(
                 'assets/app_images/pix.png',
                 height: 18,
-              ),
+              ), */
               label: const Text('Ver qrcode do Pix'),
             ),
           ),

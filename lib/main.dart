@@ -1,4 +1,5 @@
 import 'package:ecommecerfrutas/src/pages/auth/LoginScreeam.dart';
+import 'package:ecommecerfrutas/src/pages/splash/splash_screem.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
        builder: FToastBuilder(),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Lojinha de frutas',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         // Defina a cor de fundo do Scaffold como branco.
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(196, 250, 249, 249),
         ),
       ),
-      home: const LoginScreem(),
+      home:SplashScream(),  //const LoginScreem(),
     );
   }
 }
