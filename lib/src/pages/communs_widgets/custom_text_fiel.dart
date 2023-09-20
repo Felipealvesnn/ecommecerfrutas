@@ -8,10 +8,12 @@ class Cunstom_text_fild extends StatefulWidget {
   final bool IsSecret;
   final String? inicialValue;
   final bool readOnly;
+  final String? Function(String?)? Validator;
 
   const Cunstom_text_fild({
     super.key,
     this.readOnly = false,
+    this.Validator,
     this.inicialValue,
     this.inputFormatters,
     this.IsSecret = false,
@@ -40,6 +42,7 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
         bottom: 16,
       ),
       child: TextFormField(
+        validator: widget.Validator,
         readOnly: widget.readOnly,
         initialValue: widget.inicialValue,
         inputFormatters: widget.inputFormatters,
