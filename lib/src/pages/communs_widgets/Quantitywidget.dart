@@ -79,9 +79,11 @@ class _quatitiButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: BorderRadius.circular(50),
       child: InkWell(
         borderRadius: BorderRadius.circular(50),
         onTap: onPressed,
+        highlightColor: Colors.transparent,
         child: Ink(
           width: 50,
           height: 50,

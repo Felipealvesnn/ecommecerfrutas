@@ -23,20 +23,19 @@ class _BaseScreemState extends State<BaseScreem> {
           children: [
             const HomeTab(),
             const CartTab(),
-          const Orders_tab(),
-           Profile_tab(),
+            const Orders_tab(),
+            Profile_tab(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
             setState(() {
               currentIndex = index;
-            //  pagecontroller.jumpToPage(index);
+              //  pagecontroller.jumpToPage(index);
               pagecontroller.animateToPage(
                 index,
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.bounceInOut,
-              
               );
             });
           },
