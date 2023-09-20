@@ -1,7 +1,9 @@
 import 'package:ecommecerfrutas/src/pages/auth/LoginScreeam.dart';
 import 'package:ecommecerfrutas/src/pages/splash/splash_screem.dart';
+import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +12,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
- 
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       builder: FToastBuilder(),
+    return GetMaterialApp(
+      builder: FToastBuilder(),
       debugShowCheckedModeBanner: false,
       title: 'Lojinha de frutas',
       theme: ThemeData(
@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(196, 250, 249, 249),
         ),
       ),
-      home:SplashScream(),  //const LoginScreem(),
+      initialRoute: PagesRoutes.splashRoute,
+      getPages: AppPages.pages,
+      //const LoginScreem(),
     );
   }
 }

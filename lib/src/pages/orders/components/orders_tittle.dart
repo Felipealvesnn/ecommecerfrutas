@@ -4,6 +4,7 @@ import 'package:ecommecerfrutas/src/pages/communs_widgets/payment_dialog.dart';
 import 'package:ecommecerfrutas/src/pages/orders/components/order_status.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OrdersTitle extends StatelessWidget {
   const OrdersTitle({super.key, required this.order});

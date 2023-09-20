@@ -1,6 +1,8 @@
 import 'package:ecommecerfrutas/src/pages/auth/LoginScreeam.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/app_name.dart';
+import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScream extends StatefulWidget {
   const SplashScream({super.key});
@@ -15,15 +17,16 @@ class _SplashScreamState extends State<SplashScream> {
     // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 3)).then((_) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreem(),
-        ),
-      );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => const LoginScreem(),
+      //   ),
+      // );
+      Get.offNamed(PagesRoutes.signUpRoute);
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -40,7 +43,7 @@ class _SplashScreamState extends State<SplashScream> {
           ),
         ),
         child: Column(
-        //  mainAxisAlignment: MainAxisAlignment.center,
+          //  mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             const AppnameWidget(color: Colors.white),

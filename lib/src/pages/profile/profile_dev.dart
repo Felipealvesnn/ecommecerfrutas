@@ -1,6 +1,9 @@
 import 'package:ecommecerfrutas/src/config/app_data.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/custom_text_fiel.dart';
+import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class Profile_tab extends StatefulWidget {
   const Profile_tab({super.key});
@@ -85,7 +88,7 @@ class _Profile_tabState extends State<Profile_tab> {
                   right: 5,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.of(context).pop;
+                      Navigator.pop(context, true);
                     },
                     icon: Icon(Icons.close),
                   ),
@@ -102,7 +105,9 @@ class _Profile_tabState extends State<Profile_tab> {
         title: Text("Perfil"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+                Get.offNamed(PagesRoutes.signUpRoute);
+            },
             icon: Icon(Icons.logout),
           ),
         ],

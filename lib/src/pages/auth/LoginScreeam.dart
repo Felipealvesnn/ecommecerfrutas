@@ -2,7 +2,10 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:ecommecerfrutas/src/pages/auth/sign_up_screeam.dart';
 import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/app_name.dart';
+import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../communs_widgets/custom_text_fiel.dart';
 
@@ -83,11 +86,7 @@ class LoginScreem extends StatelessWidget {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const BaseScreem(),
-                            ),
-                          );
+                          Get.offNamed(PagesRoutes.Base);
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -158,11 +157,12 @@ class LoginScreem extends StatelessWidget {
                       height: 50,
                       child: OutlinedButton(
                         onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => SignUpScreen(),
-                            ),
-                          );
+                          // Navigator.of(context).push(
+                          //   MaterialPageRoute(
+                          //     builder: (context) => SignUpScreen(),
+                          //   ),
+                          // );
+                          Get.toNamed(PagesRoutes.signInRoute);
                         },
                         style: OutlinedButton.styleFrom(
                           shape: RoundedRectangleBorder(
