@@ -9,11 +9,13 @@ class Cunstom_text_fild extends StatefulWidget {
   final String? inicialValue;
   final bool readOnly;
   final String? Function(String?)? Validator;
+  final TextEditingController? controller;
 
   const Cunstom_text_fild({
     super.key,
     this.readOnly = false,
     this.Validator,
+    this.controller,
     this.inicialValue,
     this.inputFormatters,
     this.IsSecret = false,
@@ -42,6 +44,7 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
         bottom: 16,
       ),
       child: TextFormField(
+        controller: widget.controller,
         validator: widget.Validator,
         readOnly: widget.readOnly,
         initialValue: widget.inicialValue,

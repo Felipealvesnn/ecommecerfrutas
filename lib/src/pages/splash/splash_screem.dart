@@ -1,4 +1,4 @@
-import 'package:ecommecerfrutas/src/pages/auth/LoginScreeam.dart';
+import 'package:ecommecerfrutas/src/pages/auth/views/LoginScreeam.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/app_name.dart';
 import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';

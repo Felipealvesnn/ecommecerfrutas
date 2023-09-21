@@ -1,5 +1,5 @@
-import 'package:ecommecerfrutas/src/pages/auth/LoginScreeam.dart';
-import 'package:ecommecerfrutas/src/pages/auth/sign_up_screeam.dart';
+import 'package:ecommecerfrutas/src/pages/auth/views/LoginScreeam.dart';
+import 'package:ecommecerfrutas/src/pages/auth/views/sign_up_screeam.dart';
 import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
 import 'package:ecommecerfrutas/src/pages/splash/splash_screem.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: '/Login',
-      page: () => const LoginScreem(),
+      page: () =>  LoginScreem(),
     ),
     GetPage(
       name: '/',

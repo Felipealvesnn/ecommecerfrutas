@@ -1,11 +1,14 @@
-import 'package:ecommecerfrutas/src/pages/auth/LoginScreeam.dart';
+import 'package:ecommecerfrutas/src/pages/auth/views/LoginScreeam.dart';
+import 'package:ecommecerfrutas/src/pages/auth/controller/auth_controller.dart';
 import 'package:ecommecerfrutas/src/pages/splash/splash_screem.dart';
 import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
+  Get.lazyPut(() => AuthController());
   runApp(const MyApp());
 }
 

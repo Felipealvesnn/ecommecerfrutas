@@ -84,6 +84,8 @@ List<CartItemModel> cartItems = [
 ];
 
 UseModal Userprograma = UseModal(
+  id: '1',
+  token: '123456789',
   name: 'João',
   email: 'tests@gmail.com',
   phone: '999999999',
