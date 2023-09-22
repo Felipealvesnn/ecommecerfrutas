@@ -4,28 +4,8 @@ import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashScream extends StatefulWidget {
+class SplashScream extends StatelessWidget {
   const SplashScream({super.key});
-
-  @override
-  State<SplashScream> createState() => _SplashScreamState();
-}
-
-class _SplashScreamState extends State<SplashScream> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Future.delayed(const Duration(seconds: 3)).then((_) {
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => const LoginScreem(),
-      //   ),
-      // );
-      Get.offNamed(PagesRoutes.signUpRoute);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

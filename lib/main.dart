@@ -8,7 +8,9 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
-  Get.lazyPut(() => AuthController());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Get.put(AuthController());
   runApp(const MyApp());
 }
 

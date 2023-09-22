@@ -52,7 +52,7 @@ class _HomeTabState extends State<HomeTab> {
           onTap: () {
             UtilsServices.showToast('dd', errork: true);
           },
-          child: AppnameWidget(),
+          child: const AppnameWidget(),
         ),
         actions: [
           Padding(
