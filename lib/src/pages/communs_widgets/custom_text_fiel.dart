@@ -9,15 +9,20 @@ class Cunstom_text_fild extends StatefulWidget {
   final String? inicialValue;
   final bool readOnly;
   final String? Function(String?)? Validator;
+  final void Function(String?)? onSaved;
+
   final TextEditingController? controller;
+  final TextInputType? textInputType;
 
   const Cunstom_text_fild({
     super.key,
     this.readOnly = false,
     this.Validator,
     this.controller,
+    this.textInputType,
     this.inicialValue,
     this.inputFormatters,
+    this.onSaved,
     this.IsSecret = false,
     required this.icon,
     required this.label,
@@ -44,6 +49,8 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
         bottom: 16,
       ),
       child: TextFormField(
+        onSaved: widget.onSaved,
+        keyboardType: widget.textInputType,
         controller: widget.controller,
         validator: widget.Validator,
         readOnly: widget.readOnly,
@@ -68,7 +75,6 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
           isDense: true,
           labelText: widget.label,
           border: const OutlineInputBorder(
-          
             borderRadius: BorderRadius.all(Radius.circular(18)),
           ),
         ),

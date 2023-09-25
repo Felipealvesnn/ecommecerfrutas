@@ -33,7 +33,7 @@ class AuthController extends GetxController {
       Get.offAllNamed(PagesRoutes.signUpRoute);
       return;
     } else {
-      final AuthResult auth = await AuthRepository.validateToken(token!);
+      final AuthResult auth = await AuthRepository.validateToken(token);
 
       auth.when(
         success: (user) {
@@ -89,6 +89,24 @@ class AuthController extends GetxController {
         );
       },
     );
+  }
+
+  Future<void> signUP() async {
+    isLogin.value = true;
+    AuthResult result = await AuthRepository.signUp(user);
+    isLogin.value = false;
+    result.when(success: (user) {
+      this.user = user;
+      Savetoken();
+    }, error: (String error) {
+      UtilsServices.showToast(error, errork: true);
+      Get.snackbar(
+        'Error',
+        error,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    });
   }
 
   Future<Void> ValitadeToken() async {

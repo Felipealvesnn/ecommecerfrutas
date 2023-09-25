@@ -7,6 +7,14 @@ import 'package:ecommecerfrutas/src/pages/auth/result/auth_result.dart';
 import 'package:ecommecerfrutas/src/services/http_manager.dart';
 
 class AuthRepository {
+  static AuthResult sucesoouerror(Map<dynamic, dynamic> result) {
+    if (result['result'] != null) {
+      return AuthResult.success(result['result']);
+    } else {
+      return AuthResult.error(AutherrosStrings(result['error']));
+    }
+  }
+
   static Future<AuthResult> validateToken(String token) async {
     final result = await HttpManager.restRequest(
       url: Endpoints.validateToken,
@@ -17,7 +25,6 @@ class AuthRepository {
     );
     if (result['result'] != null) {
       final user = UseModal.fromJson(result['result']);
-
 
       return AuthResult.success(user);
     } else {
@@ -35,10 +42,15 @@ class AuthRepository {
         'password': password,
       },
     );
-    if (result['result'] != null) {
-      return AuthResult.success(result['result']);
-    } else {
-      return AuthResult.error(AutherrosStrings(result['error']));
-    }
+    return sucesoouerror(result);
+  }
+
+  static Future<AuthResult> signUp(UseModal user) async {
+    final result = await HttpManager.restRequest(
+      url: Endpoints.signup,
+      method: HttpMethods.post,
+      body: user.toJson(),
+    );
+    return sucesoouerror(result);
   }
 }
