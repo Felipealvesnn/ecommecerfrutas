@@ -122,23 +122,30 @@ class SignUpScreen extends StatelessWidget {
                                 ),
                                 SizedBox(
                                   height: 50,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      if (_formkey.currentState!.validate()) {
-                                        _formkey.currentState!.save();
-                                        authcontroller.signUP();
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
+                                  child: Obx(
+                                    () => ElevatedButton(
+                                      onPressed: authcontroller.isLogin.value
+                                          ? null
+                                          : () {
+                                              FocusScope.of(context).unfocus();
+                                              if (_formkey.currentState!
+                                                  .validate()) {
+                                                _formkey.currentState!.save();
+                                                authcontroller.signUP();
+                                              }
+                                            },
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
                                       ),
-                                    ),
-                                    child: const Text(
-                                      "Cadastrar",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                      child: const Text(
+                                        "Cadastrar",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ),

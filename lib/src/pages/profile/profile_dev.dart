@@ -1,4 +1,5 @@
 import 'package:ecommecerfrutas/src/config/app_data.dart';
+import 'package:ecommecerfrutas/src/pages/auth/controller/auth_controller.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/custom_text_fiel.dart';
 import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class Profile_tab extends StatefulWidget {
 }
 
 class _Profile_tabState extends State<Profile_tab> {
+  final authcontrolerr = Get.find<AuthController>();
+  
   @override
   Widget build(BuildContext context) {
     Future<bool?> updaTePassoword() {
@@ -88,7 +91,7 @@ class _Profile_tabState extends State<Profile_tab> {
                   right: 5,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.pop(context, true);
+                     authcontrolerr.signOut();
                     },
                     icon: Icon(Icons.close),
                   ),
