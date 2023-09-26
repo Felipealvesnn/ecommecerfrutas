@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:ecommecerfrutas/src/pages/auth/controller/auth_controller.dart';
+import 'package:ecommecerfrutas/src/pages/auth/views/components/forgot_password_dialog.dart';
 import 'package:ecommecerfrutas/src/pages/auth/views/sign_up_screeam.dart';
 import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/app_name.dart';
@@ -151,9 +152,18 @@ class LoginScreem extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (_) {
+                                return ForgotPasswordDialog(
+                                  email: emailController.text,
+                                );
+                              },
+                            );
+                          },
                           child: const Text(
-                            "Forgot Password?",
+                            "Esqueceu a senha?",
                             style: TextStyle(
                               color: Colors.red,
                               fontSize: 16,

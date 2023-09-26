@@ -13,10 +13,12 @@ class Cunstom_text_fild extends StatefulWidget {
 
   final TextEditingController? controller;
   final TextInputType? textInputType;
+  final GlobalKey<FormFieldState>? FormFieldKey;
 
   const Cunstom_text_fild({
     super.key,
     this.readOnly = false,
+    this.FormFieldKey,
     this.Validator,
     this.controller,
     this.textInputType,
@@ -49,6 +51,7 @@ class _Cunstom_text_fildState extends State<Cunstom_text_fild> {
         bottom: 16,
       ),
       child: TextFormField(
+        key: widget.FormFieldKey,
         onSaved: widget.onSaved,
         keyboardType: widget.textInputType,
         controller: widget.controller,

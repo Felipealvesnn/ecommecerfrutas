@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:ecommecerfrutas/src/constants/endsPotins.dart';
@@ -52,5 +53,16 @@ class AuthRepository {
       body: user.toJson(),
     );
     return sucesoouerror(result);
+  }
+
+  static Future<void> resetePassoword(String email) async {
+    await HttpManager.restRequest(
+      url: Endpoints.resetPassword,
+      method: HttpMethods.post,
+      body: {
+        'email': email,
+      },
+    );
+    //return sucesoouerror(result);
   }
 }

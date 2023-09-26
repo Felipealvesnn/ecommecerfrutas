@@ -109,6 +109,14 @@ class AuthController extends GetxController {
     });
   }
 
+  Future<void> resetePassoword(String email) async {
+    isLogin.value = true;
+    await AuthRepository.resetePassoword(email);
+    isLogin.value = false;
+    Get.back();
+    UtilsServices.showToast('Email resetado com sucesso');
+  }
+
   Future<Void> ValitadeToken() async {
     isLogin.value = true;
     final AuthResult result = await AuthRepository.validateToken(user.token!);
