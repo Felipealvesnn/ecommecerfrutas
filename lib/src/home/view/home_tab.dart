@@ -30,7 +30,7 @@ class _HomeTabState extends State<HomeTab> {
   void initState() {
     super.initState();
 
-    Get.find<Homecontroller>();
+    final homecontroller = Get.find<Homecontroller>();
   }
 
   @override

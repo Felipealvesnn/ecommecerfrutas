@@ -37,7 +37,7 @@ class Homecontroller extends GetxController {
         if (categories.isEmpty) return;
         selectCategory(categories.first);
 
-        print(data);
+       // print(data);
       }, error: (error) {
         UtilsServices.showToast(error, errork: true);
       });
