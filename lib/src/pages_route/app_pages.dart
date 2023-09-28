@@ -1,3 +1,4 @@
+import 'package:ecommecerfrutas/src/home/binding/home_binding.dart';
 import 'package:ecommecerfrutas/src/pages/auth/views/LoginScreeam.dart';
 import 'package:ecommecerfrutas/src/pages/auth/views/sign_up_screeam.dart';
 import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
@@ -17,22 +18,22 @@ abstract class AppPages {
     ),
     GetPage(
       name: '/Login',
-      page: () =>  LoginScreem(),
+      page: () => LoginScreem(),
     ),
     GetPage(
+      bindings: [
+        HomeBiding(),
+      ],
       name: '/',
-      page: () =>  const BaseScreem(),
+      page: () => const BaseScreem(),
     ),
   ];
 }
 
-
-abstract class PagesRoutes{
-
+abstract class PagesRoutes {
   static const String signInRoute = '/SignUp';
   static const String Base = '/';
 
   static const String signUpRoute = '/Login';
   static const String splashRoute = '/Splash';
-  
 }

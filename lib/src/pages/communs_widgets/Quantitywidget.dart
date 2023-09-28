@@ -82,7 +82,7 @@ class _quatitiButtom extends StatelessWidget {
       borderRadius: BorderRadius.circular(50),
       child: InkWell(
         borderRadius: BorderRadius.circular(50),
-        onTap: onPressed,
+        //onTap: onPressed,
         highlightColor: Colors.transparent,
         child: Ink(
           width: 50,

@@ -84,6 +84,8 @@ class _CartTabState extends State<CartTab> {
               },
             ),
           ),
+
+          // Botao de total
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(

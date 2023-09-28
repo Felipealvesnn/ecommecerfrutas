@@ -1,4 +1,4 @@
-import 'package:ecommecerfrutas/src/home/home_tab.dart';
+import 'package:ecommecerfrutas/src/home/view/home_tab.dart';
 import 'package:ecommecerfrutas/src/pages/cart/cart_tab.dart';
 import 'package:ecommecerfrutas/src/pages/orders/orders_tab.dart';
 import 'package:ecommecerfrutas/src/pages/profile/profile_dev.dart';
