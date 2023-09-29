@@ -1,9 +1,7 @@
 import 'package:ecommecerfrutas/src/constants/endsPotins.dart';
 import 'package:ecommecerfrutas/src/home/result/home_result.dart';
 import 'package:ecommecerfrutas/src/models/category_model.dart';
-import 'package:ecommecerfrutas/src/models/user_model.dart';
-import 'package:ecommecerfrutas/src/pages/auth/repository/auth_errors.dart';
-import 'package:ecommecerfrutas/src/pages/auth/result/auth_result.dart';
+import 'package:ecommecerfrutas/src/models/item_model.dart';
 import 'package:ecommecerfrutas/src/services/http_manager.dart';
 
 class HomeRepository {
@@ -27,5 +25,24 @@ class HomeRepository {
     }
   }
 
+  Future<HomeREsult<ItemModel>> getAllProducts(
+      Map<String, dynamic> body) async {
+    final result = await HttpManager.restRequest(
+      url: Endpoints.getAllProducts,
+      method: HttpMethods.post,
+      body: body,
+    );
+
+    if (result['result'] != null) {
+      List<ItemModel> data = List<Map<String, dynamic>>.from(result['result'])
+          .map(ItemModel.fromJson)
+          .toList();
+
+      return HomeREsult<ItemModel>.success(data);
+    } else {
+      return HomeREsult.error(
+          'Ocorreu um erro inesperado ao recuperar os itens');
+    }
+  }
   
 }

@@ -56,7 +56,7 @@ class _item_titleState extends State<item_title> {
                       tag: widget.item.imgUrl,
                       child: Container(
                         key: imageKey,
-                        child: Image.asset(
+                        child: Image.network(
                           widget.item.imgUrl,
                         ),
                       ),

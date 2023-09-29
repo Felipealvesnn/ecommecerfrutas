@@ -30,7 +30,7 @@ class _HomeTabState extends State<HomeTab> {
   void initState() {
     super.initState();
 
-    final homecontroller = Get.find<Homecontroller>();
+    Get.find<Homecontroller>();
   }
 
   @override
@@ -125,7 +125,7 @@ class _HomeTabState extends State<HomeTab> {
                     height: 30,
                     margin: const EdgeInsets.only(bottom: 16),
                     padding: const EdgeInsets.only(left: 16),
-                    child: !controller.isLoading
+                    child: !controller.isCategoryLoading
                         ? ListView.separated(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             itemCount: controller.categories.length,
@@ -149,7 +149,7 @@ class _HomeTabState extends State<HomeTab> {
                           )
                         : ListView.separated(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
-                            itemCount: AppData.categorias.length,
+                            itemCount: controller.categories.length,
                             itemBuilder: (context, index) {
                               return CustomShimmer(
                                 height: 30,
@@ -167,17 +167,17 @@ class _HomeTabState extends State<HomeTab> {
                           ));
               },
             ),
+            //produtos
+
             GetBuilder<Homecontroller>(
-              init: Homecontroller(),
-              initState: (_) {},
               builder: (controller) {
                 return Expanded(
-                  child: !controller.isLoading
+                  child: !controller.isProductLoading
                       ? GridView.builder(
                           physics: const BouncingScrollPhysics(),
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           shrinkWrap: true,
-                          itemCount: AppData.items.length,
+                          itemCount: controller.allProducts.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -187,7 +187,7 @@ class _HomeTabState extends State<HomeTab> {
                           ),
                           itemBuilder: (context, index) {
                             return item_title(
-                              item: AppData.items[index],
+                              item: controller.allProducts[index],
                               runAddToCardAnimation: itemSelectedCartAnimations,
                             );
                           },
