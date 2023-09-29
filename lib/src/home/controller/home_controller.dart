@@ -12,6 +12,11 @@ class Homecontroller extends GetxController {
   bool isCategoryLoading = false;
   bool isProductLoading = true;
 
+  bool get isLastPage {
+    if (currentew!.items.length < itemsPerPage) return true;
+    return currentew!.pagination * itemsPerPage > allProducts.length;
+  }
+
   List<CategoryModel> categories = [];
   RxString searchTitle = ''.obs;
 
@@ -64,6 +69,16 @@ class Homecontroller extends GetxController {
     }
   }
 
+   loadMorepodructs(){
+    currentew!.pagination++;
+
+    getAllProducts(canLoad: false);
+
+
+   }
+
+
+
   Future<void> getAllProducts({bool canLoad = true}) async {
     if (canLoad) {
       setLoading(true, isProduct: true);
@@ -71,7 +86,7 @@ class Homecontroller extends GetxController {
 
     Map<String, dynamic> body = {
       'page': currentew!.pagination,
-      'categoryId': currentew!.id,
+      // 'categoryId': currentew!.id,
       'itemsPerPage': itemsPerPage,
     };
 

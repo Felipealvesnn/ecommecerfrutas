@@ -186,6 +186,13 @@ class _HomeTabState extends State<HomeTab> {
                             crossAxisSpacing: 16,
                           ),
                           itemBuilder: (context, index) {
+                            if(index +1 == controller.allProducts.length){
+                              
+                              if(!controller.isLastPage){
+                                controller.loadMorepodructs();
+                              }
+
+                            }
                             return item_title(
                               item: controller.allProducts[index],
                               runAddToCardAnimation: itemSelectedCartAnimations,
