@@ -5,6 +5,7 @@ import 'package:ecommecerfrutas/src/pages_route/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:http/http.dart';
 
 class Profile_tab extends StatefulWidget {
   const Profile_tab({super.key});
@@ -91,7 +92,7 @@ class _Profile_tabState extends State<Profile_tab> {
                   right: 5,
                   child: IconButton(
                     onPressed: () {
-                     authcontrolerr.signOut();
+                      Get.back();
                     },
                     icon: Icon(Icons.close),
                   ),

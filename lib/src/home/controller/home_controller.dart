@@ -17,7 +17,7 @@ class Homecontroller extends GetxController {
     return currentew!.pagination * itemsPerPage > allProducts.length;
   }
 
-  List<CategoryModel> categories = [];
+  List<CategoryModel> Allcategories = [];
   RxString searchTitle = ''.obs;
 
   List<ItemModel> get allProducts => currentew!.items ?? [];
@@ -32,6 +32,40 @@ class Homecontroller extends GetxController {
     getAllProducts();
   }
 
+ 
+
+  void filterByTitle() {
+    for (var category in Allcategories) {
+      category.items.clear();
+      category.pagination = 0;
+    }
+
+    if (searchTitle.value.isEmpty) {
+      Allcategories.removeAt(0);
+    } else {
+      CategoryModel? c = Allcategories.firstWhereOrNull((cat) => cat.id == '');
+
+      if (c == null) {
+        final allProductCategory = CategoryModel(
+          id: '',
+          title: 'Todos',
+          items: [],
+          pagination: 0,
+        );
+        Allcategories.insert(0, allProductCategory);
+      } 
+      else {
+        c.items.clear();
+        c.pagination = 0;
+      }
+    }
+
+    currentew = Allcategories.first;
+    update();
+    getAllProducts();
+    
+  }
+
   void setLoading(bool value, {bool isProduct = false}) {
     if (!isProduct) {
       isCategoryLoading = value;
@@ -44,7 +78,17 @@ class Homecontroller extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
     getAllCategories();
+    debounce(
+      searchTitle,
+      (callback) {
+        print("callback  as Strin");
+        filterByTitle();
+        update();
+      },
+      time: const Duration(milliseconds: 600),
+    );
   }
 
   Future<void> getAllCategories() async {
@@ -55,9 +99,9 @@ class Homecontroller extends GetxController {
 
       setLoading(false);
       response.when(success: (data) {
-        categories.assignAll(data);
-        if (categories.isEmpty) return;
-        selectCategory(categories.first);
+        Allcategories.assignAll(data);
+        if (Allcategories.isEmpty) return;
+        selectCategory(Allcategories.first);
 
         // print(data);
       }, error: (error) {
@@ -69,15 +113,11 @@ class Homecontroller extends GetxController {
     }
   }
 
-   loadMorepodructs(){
+  loadMorepodructs() {
     currentew!.pagination++;
 
     getAllProducts(canLoad: false);
-
-
-   }
-
-
+  }
 
   Future<void> getAllProducts({bool canLoad = true}) async {
     if (canLoad) {
@@ -86,7 +126,7 @@ class Homecontroller extends GetxController {
 
     Map<String, dynamic> body = {
       'page': currentew!.pagination,
-      // 'categoryId': currentew!.id,
+      'categoryId': currentew!.id,
       'itemsPerPage': itemsPerPage,
     };
 
