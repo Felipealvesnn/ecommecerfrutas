@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:ecommecerfrutas/src/config/app_data.dart';
 import 'package:ecommecerfrutas/src/models/cart_item_model.dart';
-import 'package:ecommecerfrutas/src/pages/cart/components/cart_title.dart';
+import 'package:ecommecerfrutas/src/pages/cart/view/components/cart_title.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/payment_dialog.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
