@@ -2,6 +2,7 @@ import 'package:ecommecerfrutas/src/home/binding/home_binding.dart';
 import 'package:ecommecerfrutas/src/pages/auth/views/LoginScreeam.dart';
 import 'package:ecommecerfrutas/src/pages/auth/views/sign_up_screeam.dart';
 import 'package:ecommecerfrutas/src/pages/base/base_screen.dart';
+import 'package:ecommecerfrutas/src/pages/base/binding/navigation_biding.dart';
 import 'package:ecommecerfrutas/src/pages/splash/splash_screem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,7 @@ abstract class AppPages {
     GetPage(
       bindings: [
         HomeBiding(),
+        NavigationBinding(),
       ],
       name: '/',
       page: () => const BaseScreem(),

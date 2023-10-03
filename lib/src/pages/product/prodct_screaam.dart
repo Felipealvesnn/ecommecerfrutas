@@ -1,7 +1,9 @@
 import 'package:ecommecerfrutas/src/models/item_model.dart';
+import 'package:ecommecerfrutas/src/pages/base/controller/navigation_controller.dart';
 import 'package:ecommecerfrutas/src/pages/communs_widgets/Quantitywidget.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductScream extends StatefulWidget {
   final ItemModel item;
@@ -14,6 +16,7 @@ class ProductScream extends StatefulWidget {
 
 class _ProductScreamState extends State<ProductScream> {
   int cartItemQuantiti = 2;
+  final navigationControler = Get.find<NavigationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +115,12 @@ class _ProductScreamState extends State<ProductScream> {
                             width: double.infinity,
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                ThemeData.dark();
+                               //fechar tela
+                               Get.back();
+
+                               //abrir carrinho
+                                navigationControler.navigationPageview(NavigationTabs.cart);
+
                               },
                               label: const Text(
                                 "Adicionar ao carrinho",
