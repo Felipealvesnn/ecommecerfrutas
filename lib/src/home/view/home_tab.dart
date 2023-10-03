@@ -214,6 +214,15 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                   child: Visibility(
                     visible: (controller.currentew?.items ?? []).isNotEmpty,
+                    replacement: Column(
+                      children: [
+                        Icon(
+                          Icons.search_off,
+                          size: 100,
+                          color: Colors.grey[300],
+                        )
+                      ],
+                    ),
                     child: GridView.builder(
                       physics: const BouncingScrollPhysics(),
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -237,15 +246,6 @@ class _HomeTabState extends State<HomeTab> {
                           runAddToCardAnimation: itemSelectedCartAnimations,
                         );
                       },
-                    ),
-                    replacement: Column(
-                      children: [
-                        Icon(
-                          Icons.search_off,
-                          size: 100,
-                          color: Colors.grey[300],
-                        )
-                      ],
                     ),
                   ),
                 ));

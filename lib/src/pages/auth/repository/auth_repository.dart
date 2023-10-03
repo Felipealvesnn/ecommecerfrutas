@@ -35,7 +35,7 @@ class AuthRepository {
 
   static Future<AuthResult> signIn(
       {required String email, required String password}) async {
-    final result = await HttpManager.restRequest(
+    final result = await HttpManagers.restRequest(
       url: Endpoints.signin,
       method: HttpMethods.post,
       body: {

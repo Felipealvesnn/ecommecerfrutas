@@ -28,7 +28,7 @@ class _ProductScreamState extends State<ProductScream> {
               Expanded(
                 child: Hero(
                   tag: widget.item.imgUrl,
-                  child: Image.asset(widget.item.imgUrl),
+                  child: Image.network(widget.item.imgUrl),
                 ),
               ),
               Expanded(
@@ -111,7 +111,9 @@ class _ProductScreamState extends State<ProductScream> {
                             height: 55,
                             width: double.infinity,
                             child: ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                ThemeData.dark();
+                              },
                               label: const Text(
                                 "Adicionar ao carrinho",
                                 style: TextStyle(

@@ -17,51 +17,52 @@ class _BaseScreemState extends State<BaseScreem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: pagecontroller,
-          children: [
-            const HomeTab(),
-            const CartTab(),
-            const Orders_tab(),
-            Profile_tab(),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-              //  pagecontroller.jumpToPage(index);
-              pagecontroller.animateToPage(
-                index,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.bounceInOut,
-              );
-            });
-          },
-          currentIndex: currentIndex,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.green,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withOpacity(.60),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_outlined),
-              label: "Carrinho",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              label: "Pedidos",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outlined),
-              label: "Perfil",
-            ),
-          ],
-        ));
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: pagecontroller,
+        children: const [
+          HomeTab(),
+          CartTab(),
+          Orders_tab(),
+          Profile_tab(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+            //  pagecontroller.jumpToPage(index);
+            pagecontroller.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.bounceInOut,
+            );
+          });
+        },
+        currentIndex: currentIndex,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.green,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(.60),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: "Carrinho",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: "Pedidos",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outlined),
+            label: "Perfil",
+          ),
+        ],
+      ),
+    );
   }
 }

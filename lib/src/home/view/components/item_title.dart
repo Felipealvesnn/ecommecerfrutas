@@ -2,6 +2,7 @@ import 'package:ecommecerfrutas/src/models/item_model.dart';
 import 'package:ecommecerfrutas/src/pages/product/prodct_screaam.dart';
 import 'package:ecommecerfrutas/src/services/utils_services.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class item_title extends StatefulWidget {
   final ItemModel item;
@@ -31,13 +32,7 @@ class _item_titleState extends State<item_title> {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => ProductScream(
-                  item: widget.item,
-                ),
-              ),
-            );
+            Get.to(() => ProductScream(item: widget.item));
           },
           child: Card(
             elevation: 1,
